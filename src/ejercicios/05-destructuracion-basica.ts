@@ -1,5 +1,3 @@
-//TYPESCRIPT
-
 //OBJECT DESTRUCTURING
 interface Reproductor {
     volumen: number;

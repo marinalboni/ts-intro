@@ -1,49 +1,32 @@
-//TYPESCRIPT
+//DESTRUCTURING ARGUMENTOS
 
-//OBJECT DESTRUCTURING
-interface Reproductor {
-    volumen: number;
-    segundo: number;
-    cancion: string;
-    detalles: Detalles;
-}
+interface Producto {
+    descripcion: string;
+    precio: number;
+};
 
-interface Detalles {
-    autor: string;
-    anio: number;
-}
+const telefono: Producto = {
+    descripcion: 'Nokia A1',
+    precio: 300
+};
 
-const reproductor: Reproductor = {
-    volumen: 90,
-    segundo: 34,
-    cancion: 'No one dies from love',
-    detalles: {
-        autor: 'Tove Lo',
-        anio: 2022
-    }
-}
+const ipad: Producto = {
+    descripcion: 'Apple ipad',
+    precio: 1000
+};
 
-const { volumen, segundo, cancion, detalles } = reproductor;
-const { autor, anio } = detalles;
+function calculaImpuestoSobreVenta(productos: Producto[]): number {
+    let total: number = 0;
 
-//OTRA MANERA DE HACERLO
-// const { volumen, segundo, cancion, detalles: { autor, anio } } = reproductor;
+    productos.forEach(({ precio }) => {  //<-------- AQUIIIIIIIII
+        total += precio
+    })
 
-console.log('El volumen actual es de: ', volumen);
-console.log('El segundo actual es de: ', segundo);
-console.log('La cancion actual es: ', cancion);
-console.log('El autor es: ', autor);
-console.log('El año es: ', anio);
+    return total * 0.15
+};
 
+const articulos: Producto[] = [telefono, ipad];
 
+const isv = calculaImpuestoSobreVenta(articulos);
 
-
-
-
-//ARRAY DESTRUCTURING
-const dragonBallZ: string[] = ['Goku', 'Vegeta', 'Trunks'];
-
-const [ goku, , laranja ] = dragonBallZ;
-
-console.log('Personaje 1: ', goku); //'Goku'
-console.log('Personaje 3: ', laranja); //'Trunks'
+console.log(isv);
